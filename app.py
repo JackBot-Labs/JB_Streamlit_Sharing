@@ -1,7 +1,7 @@
 import streamlit as st
 
 # 비밀번호 하드코딩 (또는 st.secrets로 대체 가능)
-CORRECT_PASSWORD = "jack2025"
+CORRECT_PASSWORD = "3225"
 
 st.title("🔐 Jack's Secure Dashboard")
 
