@@ -1,17 +1,21 @@
-
 import streamlit as st
-import pandas as pd
 
-st.title("📊 Jack's Streamlit 공유 예제")
+# 비밀번호 하드코딩 (또는 st.secrets로 대체 가능)
+CORRECT_PASSWORD = "jack2025"
 
-uploaded_file = st.file_uploader("📂 엑셀 파일을 업로드하세요", type="xlsx")
+st.title("🔐 Jack's Secure Dashboard")
 
-if uploaded_file:
-    df = pd.read_excel(uploaded_file)
-    st.write("✅ 업로드된 데이터:")
-    st.dataframe(df)
+# 비밀번호 입력 받기
+password = st.text_input("비밀번호를 입력하세요:", type="password")
 
-    st.line_chart(df.select_dtypes(include='number'))
-
+if password == CORRECT_PASSWORD:
+    st.success("✅ 인증 성공! 대시보드를 시작합니다.")
+    
+    # 👉 여기 아래에 본문 대시보드 코드 작성
+    st.write("📊 여기에 데이터/그래프/업로드 등 내용이 들어갑니다.")
+    
 else:
-    st.info("👆 엑셀 파일을 업로드하면 차트를 볼 수 있어요.")
+    if password:  # 입력은 했는데 틀렸을 경우
+        st.error("❌ 비밀번호가 틀렸습니다.")
+    else:
+        st.info("🔐 비밀번호를 입력해야 대시보드를 볼 수 있습니다.")
